@@ -8,15 +8,12 @@
 #include "driver/gpio.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "freertos/queue.h"
-#include "freertos/semphr.h"
 #include "esp_log.h"
 
-#define PWM_PIN 5
+#define PWM_PIN_LED         5
 #define PWM_DUTY_RESOLUTION 16
 
 const char *TAG = "PWM"; 
-
 
 void duty_att(void);
 
@@ -33,7 +30,7 @@ void app_main(void)
 
     ledc_channel_config_t channel_config = {
         .channel = LEDC_CHANNEL_0,
-        .gpio_num = PWM_PIN,
+        .gpio_num = PWM_PIN_LED,
         .speed_mode = LEDC_LOW_SPEED_MODE,
         .timer_sel = LEDC_TIMER_0
     };
